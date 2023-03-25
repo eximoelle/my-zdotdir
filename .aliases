@@ -13,9 +13,10 @@ alias vi=nvim
 alias vim=nvim
 
 # more ways to ls
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias ldot='ls -ld .*'
+alias ls='exa --icons --group-directories-first'                                                            # ls
+alias la='exa -lbhgUma --git --color-scale --icons --group-directories-first'                               # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --icons --group-directories-first'    # all + extended list
+alias lt='exa -a --tree --level=3 --icons --group-directories-first'                                        # tree
 
 # fix common typos
 alias quit='exit'
