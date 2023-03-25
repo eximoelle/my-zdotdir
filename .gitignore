@@ -12,3 +12,4 @@
 *.zwc
 *.zwc.old
 ~*
+.p10k.zsh
