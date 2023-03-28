@@ -27,16 +27,19 @@
 1. Если у вас MacOS и вы установили `yc-cli` из `homebrew`:
 ```
 ZDOTDIR=~/.config/zsh
-git clone --branch yc-cli https://github.com/eximoelle/my-zdotdir $ZDOTDIR
+git clone --branch refining https://github.com/eximoelle/my-zdotdir $ZDOTDIR
 ln -s /usr/local/Caskroom/yandex-cloud-cli/latest/yandex-cloud-cli/completion.zsh.inc $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
 ```
 
-Если не используете `yc-cli` (и во всех остальных случаях):
+Если не используете `yc-cli`:
 ```
+ZDOTDIR=~/.config/zsh
 git clone --branch refining https://github.com/eximoelle/my-zdotdir $ZDOTDIR
 ```
 
-Ветка `yc-cli` отличается от `refining` уже подключенным в `.zsh_plugins.txt` модулем подсказок из пакета `yandex-cloud-cli`. Причем, модуль, который поставляется в составе этого пакета, нельзя напрямую подключить к Antidote. Поэтому для него мы создаем символьную ссылку с измененным именем в директории для кастомных плагинов и после этого его можно загружать через `.zsh_plugins.txt` стандартным методом.
+После установки откройте файл `.zsh_plugins.txt` и закомментируйте строку 216 ' $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh '
+
+По умолчанию в `.zsh_plugins.txt` подключен модуль подсказок из пакета `yandex-cloud-cli`. Причем, модуль, который поставляется в составе этого пакета, нельзя напрямую подключить к Antidote. Поэтому для него мы создаем символьную ссылку с измененным именем в директории для кастомных плагинов и после этого его можно загружать через `.zsh_plugins.txt` стандартным методом.
 
 2. Создание символьной ссылки на `.zshenv`:
 ```
