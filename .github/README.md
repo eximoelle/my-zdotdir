@@ -1,41 +1,56 @@
-# zdotdir
+# my-zdotdir
 
-> A sample Zsh config using the antidote plugin manager
+> Пример конфига для Zsh с использованием менеджера плагинов Antidote.
 
-## Description
+## Описание
 
-This project aims to give you an example Zsh config that uses [antidote] as a plugin manager and pulls some amazing Zsh plugins together. Consider it a starter kit for antidote and Zsh. Please borrow from it for your own config, or fork it and make it your own.
+Это — форк оригинального [getantidote/zdot](https://github.com/getantidote/zdot).
 
-## What's included
+Цель этого проекта — дать вам пример конфига Zsh, который использует менеджер плагинов [Antidote] с некоторыми плагинами от комьюнити, доступными из коробки. Считайте это стартовым паком для Antidote и Zsh. Адаптируйте его под свои потребности.
 
-A sample antidote `.zsh_plugins.txt` file that bundles plugins with the following plugin provided features:
-- Better Zsh defaults using [zsh-utils](https://github.com/sorin-ionescu/prezto)
-- [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [History substring searching](https://github.com/zsh-users/zsh-history-substring-search)
-- [Syntax highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
-- <kbd>TAB</kbd> completions
-- The popular [Pure prompt](https://github.com/sindresorhus/pure)
-- A few goodies from [Oh-My-Zsh](https://github.com/belak/zsh-utils)
-- A `functions` directory for lazy-loaded functions
-- A custom plugins directory so you can add your own plugins
-- Lots of [helpful plugins](https://github.com/unixorn/awesome-zsh-plugins)!
-- And much more, all without compromising shell speed :rocket:
+## Что включено
 
-## Installation
+В файле `.zsh_plugins.txt` содержатся директивы для установки плагинов, которые дарят пользователям Zsh следующие фичи:
+- Хорошие дефолтные параметры для Zsh от [zsh-utils](https://github.com/sorin-ionescu/prezto)
+- Автопредложения от [zsh-users/autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- Поиск по истории ввода конкретной команды с [History substring searching](https://github.com/zsh-users/zsh-history-substring-search)
+- [Подсветка синтаксиса](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+- Подсказки для команд по <kbd>TAB</kbd>
+- Тема командной строки [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- Кое-что из [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
+- Отдельная папка для кастомных плагинов
+- Много [полезных плагинов](https://github.com/unixorn/awesome-zsh-plugins)!
+- Многое другое без компромисса со скоростью шелла :rocket:
 
-Clone this project to `$ZDOTDIR`, and then make a symlink to `.zshenv`.
+## Установка
 
-```zsh
-# clone this project
+1. Если у вас MacOS и вы установили `yc-cli` из `homebrew`:
+```
 ZDOTDIR=~/.config/zsh
-git clone https://github.com/getantidote/zdotdir $ZDOTDIR
+git clone --branch yc-cli https://github.com/eximoelle/my-zdotdir $ZDOTDIR
+ln -s /usr/local/Caskroom/yandex-cloud-cli/latest/yandex-cloud-cli/completion.zsh.inc $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
+```
 
-# symlink .zshenv
+Если не используете `yc-cli` (и во всех остальных случаях):
+```
+git clone --branch refining https://github.com/eximoelle/my-zdotdir $ZDOTDIR
+```
+
+Ветка `yc-cli` отличается от `refining` уже подключенным в `.zsh_plugins.txt` модулем подсказок из пакета `yandex-cloud-cli`. Причем, модуль, который поставляется в составе этого пакета, нельзя напрямую подключить к Antidote. Поэтому для него мы создаем символьную ссылку с измененным именем в директории для кастомных плагинов и после этого его можно загружать через `.zsh_plugins.txt` стандартным методом.
+
+2. Создание символьной ссылки на `.zshenv`:
+```
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
 ln -s $ZDOTDIR/.zshenv ~/.zshenv
+```
 
-# start a new zsh session
+Если файл `.zshenv` уже существует — сделаем бэкап. Затем установим символьную ссылку.
+
+3. Запуск новой сессии:
+```
 zsh
 ```
 
-[antidote]: https://getantidote.github.io
+Либо откройте новое окно терминала.
+
+[Antidote]: https://getantidote.github.io
