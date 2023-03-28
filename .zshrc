@@ -18,6 +18,10 @@ ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
 fpath=($ZFUNCDIR $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 
+# Solution for 'complete:13: command not found: compdef'
+# from https://linux-notes.org/oshibka-complete-13-command-not-found-compdef-v-zsh-na-mac-os/
+autoload -Uz compinit && compinit
+
 # Source zstyles you might use with antidote.
 [[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
@@ -31,6 +35,3 @@ antidote load
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# Yandex Cloud CLI completions init
-source "/usr/local/Caskroom/yandex-cloud-cli/latest/yandex-cloud-cli/completion.zsh.inc"
