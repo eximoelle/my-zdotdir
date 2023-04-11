@@ -44,3 +44,4 @@ alias zdot='cd ${ZDOTDIR:-~}'
 
 # aws-cli for Yandex Cloud
 alias ycs3='aws s3 --endpoint-url=https://storage.yandexcloud.net'
+alias ycs3api='aws s3api --endpoint-url=https://storage.yandexcloud.net'
