@@ -35,3 +35,12 @@ antidote load
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+#
+# Keybindings
+#
+
+# Bind arrow up, arrow down to list history substring search
+# Refer to: https://github.com/zsh-users/zsh-history-substring-search#usage
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
