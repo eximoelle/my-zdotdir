@@ -14,3 +14,4 @@
 ~*
 .p10k.zsh
 custom/plugins/yc-cli.completion.plugin.zsh
+.*DS_Store
