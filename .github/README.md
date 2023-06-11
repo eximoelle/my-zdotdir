@@ -78,7 +78,7 @@ ln -s $ZDOTDIR/.zshenv ~/.zshenv
 
 #### Для MacOS без `yc-cli`
 
-1. Используйте инструкцию выше, пропуская шаги 2-3, при этом после шага 1 откройте файл `$ZDOTDIR/.zsh_plugins.txt` и закомментируйте строку 211 `$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh`, отключив тем самым загрузку модуля автодополнения для `yc-cli`.
+1. Используйте инструкцию выше, пропуская шаги 2-3, при этом после шага 1 откройте файл `$ZDOTDIR/.zsh_plugins.txt` и закомментируйте строку 211 `/usr/local/Caskroom/yandex-cloud-cli/<ВЕРСИЯ>/yandex-cloud-cli/completion.zsh.inc`, отключив тем самым загрузку модуля автодополнения для `yc-cli`.
 
 ---
 
