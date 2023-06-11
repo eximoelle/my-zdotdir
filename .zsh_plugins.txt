@@ -209,7 +209,7 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 # Yandex Cloud CLI completions
 # Make sure you run 
 #
-# ' ln -s /usr/local/Caskroom/yandex-cloud-cli/latest/yandex-cloud-cli/completion.zsh.inc \
+# ' ln -s /usr/local/Caskroom/yandex-cloud-cli/<check latest version!>/yandex-cloud-cli/completion.zsh.inc \
 # $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh '
 #
 # before
