@@ -35,26 +35,15 @@
 
 #### Ошибка, связанная с `yc-cli` и модулем автодополнения для Zsh.
 
-После обновления `yc-cli` при старте шелла появляется сообщение:
-```
-/Users/$USER/.config/zsh/.zsh_plugins.zsh:source:39: no such file or directory: 
-/Users/$USER/.config/zsh/custom/plugins/yc-cli.completion.plugin.zsh
-```
-Это связано с костыльным решением, которое добавляет автодополнения для `yc-cli` через Antidote. Модуль, который поставляется в составе пакета `yc-cli`, нельзя напрямую подключить к Antidote. Поэтому для него мы создаем символьную ссылку с изменённым именем в директории для кастомных плагинов. Однако, так как в пути до модуля папка имеет название номера версии, после обновления путь к модулю изменяется, а символьная ссылка ведёт к отсутствующему файлу.
+После обновления `yc-cli` при старте шелла появляется сообщение, говорящее о невозможности загрузить модуль автодополнений для `yc-cli` в `.zsh_plugins.txt`. Это происходит из-за того, что путь установки пакета содержит номер версии. Когда версия меняется — старая папка удаляется. Для решения нужно:
 
-После обновления `yc-cli` требуется: 
-1. Удалить сломанную символьную ссылку:
-```
-rm $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
-```
-2. Выяснить версию `yc-cli`:
+1. Выяснить версию `yc-cli`:
 ```
 ls /usr/local/Caskroom/yandex-cloud-cli/
 ```
-3. Создать новую символьную ссылку:
+2. Заменить в файле `$ZDOTDIR/.zsh_plugins.txt` путь к `yc-cli` в строке 211, используя правильный путь:
 ```
-ln -s /usr/local/Caskroom/yandex-cloud-cli/<ВЕРСИЯ yc-cli>/yandex-cloud-cli/completion.zsh.inc \
-$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
+/usr/local/Caskroom/yandex-cloud-cli/<ВЕРСИЯ>/yandex-cloud-cli/completion.zsh.inc
 ```
 
 ---
@@ -74,10 +63,9 @@ git clone --branch refining https://github.com/eximoelle/my-zdotdir $ZDOTDIR
 ls /usr/local/Caskroom/yandex-cloud-cli/
 ```
 
-3. Создать символьную ссылку:
+3. При необходимости изменить строку 211 в файле `$ZDOTDIR/.zsh_plugins.txt`, исправив путь к модулю автодополнения `yc-cli`:
 ```
-ln -s /usr/local/Caskroom/yandex-cloud-cli/<ВЕРСИЯ yc-cli>/yandex-cloud-cli/completion.zsh.inc \
-$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
+/usr/local/Caskroom/yandex-cloud-cli/<ВЕРСИЯ>/yandex-cloud-cli/completion.zsh.inc
 ```
 
 4. Чтобы включить установленный конфиг, нужно создать символьную ссылку на `.zshenv` в корне домашней директории. Если файл `.zshenv` уже существует — будет сделан бэкап.
@@ -90,7 +78,7 @@ ln -s $ZDOTDIR/.zshenv ~/.zshenv
 
 #### Для MacOS без `yc-cli`
 
-1. Используйте инструкцию выше, пропуская шаги 2-3, при этом после шага 1 откройте файл `$ZDOTDIR/.zsh_plugins.txt` и закомментируйте строку 216 `$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh`, отключив тем самым загрузку модуля автодополнения для `yc-cli`.
+1. Используйте инструкцию выше, пропуская шаги 2-3, при этом после шага 1 откройте файл `$ZDOTDIR/.zsh_plugins.txt` и закомментируйте строку 211 `$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh`, отключив тем самым загрузку модуля автодополнения для `yc-cli`.
 
 ---
 

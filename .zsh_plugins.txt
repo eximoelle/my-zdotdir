@@ -207,13 +207,8 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 ###
 
 # Yandex Cloud CLI completions
-# Make sure you run 
-#
-# ' ln -s /usr/local/Caskroom/yandex-cloud-cli/<check latest version!>/yandex-cloud-cli/completion.zsh.inc \
-# $ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh '
-#
-# before
-$ZDOTDIR/custom/plugins/yc-cli.completion.plugin.zsh
+# If errors occur, check path to the current version of yc-cli
+/usr/local/Caskroom/yandex-cloud-cli/0.105.0/yandex-cloud-cli/completion.zsh.inc
 
 # zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
 # We combine the `path:` and `kind:fpath` annotations here:
